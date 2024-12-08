@@ -37,11 +37,25 @@ contract testMainApp is Test {
         assertEq(givingBlock.donors(0), donor);
     }
 
+    // test the contract balance after every transaction
     function testContractBalance() public {
         givingBlock.joinSantaHelpers(santaHelper);
         vm.prank(donor);
         vm.deal(donor, 2 ether);
         givingBlock.grantWish{value: 1 ether}(santaHelper);
         assertEq(givingBlock.contractBalance(), 0.03 ether);
+        assertEq(givingBlock.helperBalance(santaHelper), 0.97 ether);
+    }
+
+    function testWithdrawals() public {
+        givingBlock.joinSantaHelpers(santaHelper);
+        vm.prank(donor);
+        vm.deal(donor, 3 ether);
+        givingBlock.grantWish{value: 1 ether}(santaHelper);
+
+        vm.prank(santaHelper);
+        givingBlock.withdrawFunds();
+        assertEq(givingBlock.contractBalance(), 0.03 ether);
+        assertEq(givingBlock.helperBalance(santaHelper), 0 ether);
     }
 }
