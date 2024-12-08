@@ -2,16 +2,16 @@
 pragma solidity ^0.8.18;
 
 import {Script} from "forge-std/Script.sol";
-import {Main} from "../src/Main.sol";
+import {GivingBlock} from "../src/Main.sol";
 
 contract DeployMain is Script {
-    Main public main;
+    GivingBlock public givingBlock;
 
     function setup() public {}
 
     function run() public {
         vm.startBroadcast();
-        main = new Main();
+        givingBlock = new GivingBlock();
         vm.stopBroadcast();
     }
 }

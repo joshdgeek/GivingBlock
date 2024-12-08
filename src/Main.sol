@@ -23,6 +23,10 @@ contract GivingBlock {
         }
     }
 
+    function isHelperPublic(address addr) public view returns (bool) {
+        return isHelper[addr];
+    }
+
     function grantWish(address elf) public payable {
         require(msg.value >= 1 ether, "Please enter minimum amount of ether");
         require(isHelper[elf], "Recipient must be a registered Santa helper");
