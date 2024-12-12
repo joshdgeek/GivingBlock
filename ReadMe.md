@@ -1,0 +1,2 @@
+# The GivingBlock
+This project (The GivingBlock) was initially made to be plugged to a front-end for the sole purposes of rewarding good deeds done during the yuletide season and generaing money frommthis rewards for charity purposes.
