@@ -22,9 +22,6 @@ contract DeployMainTest is Test {
         givingBlock = deployMain.givingBlock();
 
         // Verify that the contract address is not zero
-        assertTrue(
-            address(givingBlock) != address(0),
-            "Contract not deployed!"
-        );
+        assertTrue(address(givingBlock) != address(0), "Contract not deployed!");
     }
 }
